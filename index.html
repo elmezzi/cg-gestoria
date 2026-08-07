@@ -179,6 +179,27 @@ nav.menu a:not(.btn):hover::after{right:0}
 .card li b{color:#eef2f9}
 .tag-new{background:rgba(192,90,58,.18);border:1px solid rgba(192,90,58,.42);color:#f0a583;
   font-size:.64rem;font-weight:800;letter-spacing:.08em;padding:1px 8px;border-radius:100px;text-transform:uppercase;margin-left:4px}
+.tag-soon{display:inline-flex;align-items:center;gap:6px;background:rgba(63,184,174,.14);
+  border:1px solid rgba(63,184,174,.4);color:#7fd8ce;font-size:.62rem;font-weight:800;
+  letter-spacing:.1em;padding:3px 11px;border-radius:100px;text-transform:uppercase;margin-left:10px}
+.card.c-soon .chip{background:linear-gradient(135deg,#243b3f,#16232c);border:1px solid rgba(63,184,174,.3)}
+.card.c-soon h3{display:flex;align-items:center;flex-wrap:wrap}
+.card.c-soon li{color:#8fa0a8}
+.otros{margin-top:24px;background:linear-gradient(160deg,var(--surface),var(--bg-2));
+  border:1px solid var(--line);border-radius:var(--radius);padding:34px 32px;position:relative;overflow:hidden}
+.otros::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;
+  background:linear-gradient(180deg,#3fb8ae,#2f8f88)}
+.otros h3{font-weight:800;font-stretch:85%;font-size:1.24rem;color:#fff;margin-bottom:6px}
+.otros .lead{color:var(--gold-2);font-size:.9rem;font-weight:600;margin-bottom:24px}
+.otros-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.otro{background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:16px;padding:22px 20px;transition:.3s}
+.otro:hover{border-color:var(--line-2);transform:translateY(-3px)}
+.otro .ic{width:46px;height:46px;border-radius:13px;font-size:1.3rem;margin-bottom:14px;
+  background:rgba(63,184,174,.1);border:1px solid rgba(63,184,174,.25);
+  display:flex;align-items:center;justify-content:center}
+.otro h4{color:#fff;font-weight:800;font-stretch:88%;font-size:1.02rem;margin-bottom:6px}
+.otro p{color:var(--muted);font-size:.9rem}
+@media(max-width:940px){.otros-grid{grid-template-columns:1fr}}
 
 /* ---------- Proceso ---------- */
 .pasos{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
@@ -433,6 +454,40 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
           <li>Apostillado de documentación</li>
         </ul>
       </div>
+      <div class="card c-soon reveal">
+        <div class="chip">⚖️</div>
+        <h3>Área Legal <span class="tag-soon">Próximamente</span></h3>
+        <ul>
+          <li>Sucesiones y declaratorias de herederos</li>
+          <li>Contratos y acuerdos privados</li>
+          <li>Cartas documento y telegramas laborales</li>
+          <li>Reclamos y mediaciones</li>
+          <li>Asesoramiento laboral y previsional</li>
+          <li>Poderes y documentación notarial</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="otros reveal">
+      <h3>Otros servicios — Soluciones tecnológicas</h3>
+      <p class="lead">Consultá por tu presupuesto sin cargo</p>
+      <div class="otros-grid">
+        <div class="otro">
+          <div class="ic">🏠</div>
+          <h4>Domótica</h4>
+          <p>Sistemas inteligentes: iluminación, persianas, climatización y control de accesos.</p>
+        </div>
+        <div class="otro">
+          <div class="ic">📹</div>
+          <h4>Cámaras de Seguridad</h4>
+          <p>Monitoreo 24/7 desde tu móvil, con alertas en tiempo real.</p>
+        </div>
+        <div class="otro">
+          <div class="ic">💻</div>
+          <h4>Servicio Técnico PC</h4>
+          <p>Reparación, formateo, optimización y eliminación de virus.</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -593,4 +648,3 @@ function enviarMail(){
   <script src="cg-chat-widget.js" defer></script>
 </body>
 </html>
-
