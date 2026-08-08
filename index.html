@@ -329,6 +329,59 @@ footer b{color:#fff}
   .hamb{display:block}
   .row2{grid-template-columns:1fr}
 }
+
+/* Optimización fina para celulares */
+@media(max-width:600px){
+  body{font-size:16px}
+  .wrap{padding:0 18px}
+  section{padding:56px 0}
+  .h2{font-size:1.6rem}
+  .sub{font-size:1rem;margin-bottom:36px}
+
+  /* Hero más compacto y legible */
+  .hero{padding:64px 0 76px}
+  .hero h1{font-size:2rem;line-height:1.1}
+  .hero p{font-size:1rem}
+  .hero-cta{gap:10px}
+  .hero-cta .btn{width:100%}
+  .hero-mini{gap:10px}
+  .mini{flex:1;min-width:calc(50% - 5px);padding:14px 16px}
+  .mini b{font-size:1.3rem}
+  .ring{width:210px;height:210px}
+  .ring-core{width:138px;height:138px}
+  .ring-core .big{font-size:1.9rem}
+
+  /* Tarjetas con menos padding */
+  .card{padding:26px 22px}
+  .card h3{font-size:1.14rem}
+  .otros{padding:26px 22px}
+
+  /* Botones táctiles cómodos */
+  .btn{padding:15px 24px;font-size:.95rem}
+
+  /* Reseñas: score full width y prolijo */
+  .res-head{margin-bottom:36px}
+  .score{width:100%;justify-content:center}
+
+  /* FAQ y contacto */
+  .faq summary{padding:18px 20px;font-size:.98rem}
+  .faq .ans{padding:0 20px 20px}
+  .form-card{padding:28px 22px}
+  .quote{padding:34px 26px}
+  .quote p{font-size:1.02rem}
+  .panel-cta{padding:34px 24px}
+
+  /* WhatsApp flotante un toque más chico y al borde */
+  .wa-flot{width:54px;height:54px;bottom:18px;right:18px}
+  .wa-flot svg{width:28px;height:28px}
+}
+
+/* Ajuste para pantallas muy angostas */
+@media(max-width:360px){
+  .mini{min-width:100%}
+  .hero h1{font-size:1.75rem}
+  .h2{font-size:1.45rem}
+}
 a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:6px}
 </style>
 </head>
@@ -454,13 +507,14 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
           <li>Apostillado de documentación</li>
         </ul>
       </div>
-      <div class="card c-soon reveal">
+      <div class="card c-bordo reveal">
         <div class="chip">⚖️</div>
-        <h3>Área Legal <span class="tag-soon">Próximamente</span></h3>
+        <h3>Área Legal</h3>
         <ul>
           <li>Sucesiones y declaratorias de herederos</li>
           <li>Contratos y acuerdos privados</li>
           <li>Cartas documento y telegramas laborales</li>
+          <li><b>Informe de dominio</b></li>
           <li>Reclamos y mediaciones</li>
           <li>Asesoramiento laboral y previsional</li>
           <li>Poderes y documentación notarial</li>
