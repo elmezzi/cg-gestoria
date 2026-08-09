@@ -167,16 +167,42 @@ nav.menu a:not(.btn):hover::after{right:0}
 .card:hover::before{opacity:1}
 .card .chip{width:54px;height:54px;border-radius:16px;font-size:1.5rem;
   display:flex;align-items:center;justify-content:center;margin-bottom:20px;
-  background:rgba(255,255,255,.05);border:1px solid var(--line)}
+  background:rgba(255,255,255,.05);border:1px solid var(--line);box-shadow:0 8px 20px rgba(0,0,0,.35)}
 .card.c-navy .chip{background:linear-gradient(135deg,#1f4a52,#132229);border-color:transparent}
 .card.c-gold .chip{background:linear-gradient(135deg,#2f8f88,#4fc2b7);border-color:transparent}
 .card.c-bordo .chip{background:linear-gradient(135deg,#a8492e,#c96a48);border-color:transparent}
 .card h3{font-weight:800;font-stretch:85%;font-size:1.24rem;color:#fff;margin-bottom:14px}
 .card ul{list-style:none}
-.card li{padding:8px 0 8px 26px;position:relative;font-size:.94rem;color:#b7c1d6;border-bottom:1px solid var(--line)}
+.card li{padding:8px 0 8px 26px;position:relative;font-size:.94rem;color:#b7c1d6;border-bottom:1px solid var(--line);cursor:pointer;transition:.2s}
+.card li:hover{color:#fff;padding-left:30px}
+.card li:hover::before{color:var(--gold-2)}
 .card li:last-child{border:none}
-.card li::before{content:"✓";position:absolute;left:2px;color:var(--gold);font-weight:800}
+.card li::before{content:"✓";position:absolute;left:2px;color:var(--gold);font-weight:800;transition:.2s}
+.card li[data-info]::after{content:"›";position:absolute;right:2px;top:50%;transform:translateY(-50%);
+  color:var(--muted-2);font-weight:700;font-size:1.1rem;opacity:0;transition:.2s}
+.card li[data-info]:hover::after{opacity:1;color:var(--gold-2)}
 .card li b{color:#eef2f9}
+
+/* Modal de trámite */
+.modal-ov{position:fixed;inset:0;z-index:9999;background:rgba(5,9,16,.72);backdrop-filter:blur(6px);
+  display:none;align-items:center;justify-content:center;padding:20px;opacity:0;transition:.25s}
+.modal-ov.open{display:flex;opacity:1}
+.modal{background:linear-gradient(160deg,#12213c,#0b1425);border:1px solid var(--line-2);
+  border-radius:22px;max-width:440px;width:100%;padding:34px 32px;position:relative;
+  box-shadow:0 40px 90px rgba(0,0,0,.6);transform:translateY(16px);transition:.3s}
+.modal-ov.open .modal{transform:translateY(0)}
+.modal .mchip{width:56px;height:56px;border-radius:16px;font-size:1.6rem;
+  display:flex;align-items:center;justify-content:center;margin-bottom:18px;
+  background:linear-gradient(135deg,#1f4a52,#132229)}
+.modal h3{font-size:1.35rem;font-weight:800;font-stretch:85%;color:#fff;margin-bottom:12px;padding-right:30px}
+.modal p{color:#c3ccde;font-size:.98rem;line-height:1.6;margin-bottom:24px}
+.modal .mwa{display:inline-flex;align-items:center;justify-content:center;gap:9px;width:100%;
+  background:var(--wa);color:#04180d;font-weight:700;font-size:.94rem;padding:14px;border-radius:100px;
+  text-decoration:none;transition:.2s}
+.modal .mwa:hover{filter:brightness(1.08);transform:translateY(-1px)}
+.modal .mclose{position:absolute;top:18px;right:20px;background:none;border:none;color:var(--muted);
+  font-size:1.7rem;cursor:pointer;line-height:1;padding:2px}
+.modal .mclose:hover{color:#fff}
 .tag-new{background:rgba(192,90,58,.18);border:1px solid rgba(192,90,58,.42);color:#f0a583;
   font-size:.64rem;font-weight:800;letter-spacing:.08em;padding:1px 8px;border-radius:100px;text-transform:uppercase;margin-left:4px}
 .tag-soon{display:inline-flex;align-items:center;gap:6px;background:rgba(63,184,174,.14);
@@ -457,67 +483,67 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
     <div class="serv-grid">
       <div class="card c-navy reveal">
         <div class="chip">🏛️</div>
-        <h3>Área Previsional</h3>
+                <h3>Área Previsional</h3>
         <ul>
-          <li><b>Jubilaciones:</b> nativos y extranjeros</li>
-          <li><b>Jubilaciones</b> de empleadas domésticas</li>
-          <li><b>Jubilaciones IPS</b> Provincia de Bs. As. <span class="tag-new">Nuevo</span></li>
-          <li><b>Pensiones:</b> directas, derivadas y por fallecimiento</li>
-          <li><b>PUAM:</b> Pensión Universal Adulto Mayor</li>
-          <li><b>PNC:</b> Pensiones No Contributivas</li>
-          <li><b>Salario familiar</b> y asignaciones</li>
-          <li>Planificación previsional personalizada</li>
+          <li data-info="Tramitamos tu jubilación por el régimen nacional (ANSES), tanto para argentinos como extranjeros con residencia. Analizamos tus aportes y buscamos el mejor haber posible según tu historia laboral." data-titulo="Jubilaciones ANSES"><b>Jubilaciones:</b> nativos y extranjeros</li>
+          <li data-info="Gestión de la jubilación para trabajadoras de casas particulares, contemplando el régimen especial y los aportes correspondientes a esta actividad." data-titulo="Jubilación de empleadas domésticas"><b>Jubilaciones</b> de empleadas domésticas</li>
+          <li data-info="Tramitamos jubilaciones ante el Instituto de Previsión Social (IPS) de la Provincia de Buenos Aires, para empleados provinciales y municipales." data-titulo="Jubilación IPS Provincia de Bs. As."><b>Jubilaciones IPS</b> Provincia de Bs. As. <span class="tag-new">Nuevo</span></li>
+          <li data-info="Gestionamos pensiones directas, derivadas y por fallecimiento de un familiar, para que accedas al beneficio que te corresponde ante ANSES o IPS." data-titulo="Pensiones"><b>Pensiones:</b> directas, derivadas y por fallecimiento</li>
+          <li data-info="La Pensión Universal para el Adulto Mayor es un beneficio para personas de 65 años o más que no cuentan con una jubilación. Te ayudamos a tramitarla desde cero." data-titulo="PUAM"><b>PUAM:</b> Pensión Universal Adulto Mayor</li>
+          <li data-info="Beneficios para personas en situación de vulnerabilidad: por invalidez, madres de 7 o más hijos, o vejez, sin necesidad de aportes previos." data-titulo="Pensiones No Contributivas"><b>PNC:</b> Pensiones No Contributivas</li>
+          <li data-info="Gestionamos las asignaciones familiares (hijo, prenatal, ayuda escolar, etc.) ante ANSES para trabajadores y beneficiarios." data-titulo="Salario Familiar y Asignaciones"><b>Salario familiar</b> y asignaciones</li>
+          <li data-info="Analizamos tu situación de aportes y te asesoramos sobre cuándo y cómo conviene jubilarte para obtener el mejor haber posible." data-titulo="Planificación previsional">Planificación previsional personalizada</li>
         </ul>
       </div>
       <div class="card c-bordo reveal">
         <div class="chip">📋</div>
-        <h3>Gestión Laboral</h3>
+                <h3>Gestión Laboral</h3>
         <ul>
-          <li><b>Liquidación de sueldos</b></li>
-          <li>Liquidación de cargas sociales</li>
-          <li>Asesoramiento integral a empleadores</li>
+          <li data-info="Calculamos y confeccionamos los recibos de sueldo de tu personal, con todos los conceptos, descuentos y aportes al día según convenio." data-titulo="Liquidación de sueldos"><b>Liquidación de sueldos</b></li>
+          <li data-info="Determinamos y presentamos los aportes y contribuciones (F.931) que debe pagar el empleador por su personal registrado." data-titulo="Cargas sociales">Liquidación de cargas sociales</li>
+          <li data-info="Te acompañamos en todo lo relativo a la relación laboral: altas, bajas, sanciones, convenios y obligaciones como empleador." data-titulo="Asesoramiento a empleadores">Asesoramiento integral a empleadores</li>
         </ul>
       </div>
       <div class="card c-gold reveal">
         <div class="chip">🧾</div>
-        <h3>Asesoramiento Fiscal</h3>
+                <h3>Asesoramiento Fiscal</h3>
         <ul>
-          <li><b>Alta de Monotributo:</b> inscripción y recategorización</li>
-          <li>Bienes Personales</li>
-          <li>Devolución de percepciones</li>
-          <li><b>SICAM</b> (autónomos y monotributistas)</li>
-          <li>Imputación de pagos y facturación</li>
-          <li><b>Regularización de deudas:</b> planes de pago</li>
+          <li data-info="Te inscribimos en el monotributo o ajustamos tu categoría según tu facturación, para que cumplas con ARCA sin pagar de más." data-titulo="Alta y recategorización de Monotributo"><b>Alta de Monotributo:</b> inscripción y recategorización</li>
+          <li data-info="Confeccionamos y presentamos la declaración jurada del impuesto sobre los Bienes Personales según tu patrimonio." data-titulo="Bienes Personales">Bienes Personales</li>
+          <li data-info="Gestionamos la devolución de percepciones y retenciones que te descontaron de más (por compras en el exterior, dólar, etc.)." data-titulo="Devolución de percepciones">Devolución de percepciones</li>
+          <li data-info="Calculamos y regularizamos aportes adeudados como autónomo o monotributista a través del SICAM, útil para completar años para jubilarte." data-titulo="SICAM"><b>SICAM</b> (autónomos y monotributistas)</li>
+          <li data-info="Te ayudamos con la emisión de facturas y la correcta imputación de pagos ante ARCA." data-titulo="Imputación de pagos y facturación">Imputación de pagos y facturación</li>
+          <li data-info="Armamos planes de pago para regularizar deudas impositivas y previsionales, evitando intereses y sanciones mayores." data-titulo="Regularización de deudas"><b>Regularización de deudas:</b> planes de pago</li>
         </ul>
       </div>
       <div class="card c-navy reveal">
         <div class="chip">🗂️</div>
-        <h3>Claves y Trámites</h3>
+                <h3>Claves y Trámites</h3>
         <ul>
-          <li><b>Clave de Seguridad Social ANSES:</b> generación y blanqueo</li>
-          <li><b>Clave Fiscal ARCA:</b> obtención y blanqueo</li>
-          <li><b>Trámites PAMI:</b> afiliación y gestiones</li>
-          <li><b>TAD:</b> Trámites a Distancia (GCBA / Nacional)</li>
-          <li>Certificación negativa y antecedentes penales</li>
-          <li><b>Partidas:</b> nacimiento, matrimonio y defunción</li>
-          <li><b>Rectificación de partidas</b></li>
-          <li><b>CODEM:</b> comprobante de empadronamiento de obra social</li>
-          <li><b>Certificación de datos RENAPER</b></li>
-          <li><b>Certificación migratoria</b> y ciudadanía argentina</li>
-          <li>Apostillado de documentación</li>
+          <li data-info="Generamos o recuperamos tu clave de la Seguridad Social para que puedas operar en Mi ANSES y hacer trámites online." data-titulo="Clave de Seguridad Social ANSES"><b>Clave de Seguridad Social ANSES:</b> generación y blanqueo</li>
+          <li data-info="Obtenemos o blanqueamos tu clave fiscal de ARCA (ex AFIP), necesaria para todos los trámites impositivos." data-titulo="Clave Fiscal ARCA"><b>Clave Fiscal ARCA:</b> obtención y blanqueo</li>
+          <li data-info="Afiliaciones, cambios y gestiones ante PAMI para jubilados y pensionados, incluyendo medicamentos y prestaciones." data-titulo="Trámites PAMI"><b>Trámites PAMI:</b> afiliación y gestiones</li>
+          <li data-info="Realizamos trámites a distancia ante organismos nacionales y de CABA, sin que tengas que hacer filas ni moverte de tu casa." data-titulo="TAD - Trámites a Distancia"><b>TAD:</b> Trámites a Distancia (GCBA / Nacional)</li>
+          <li data-info="Obtenemos la certificación negativa de ANSES y el certificado de antecedentes penales para lo que necesites." data-titulo="Certificación negativa y antecedentes">Certificación negativa y antecedentes penales</li>
+          <li data-info="Gestionamos partidas de nacimiento, matrimonio y defunción ante el Registro Civil, incluso de otras jurisdicciones." data-titulo="Partidas"><b>Partidas:</b> nacimiento, matrimonio y defunción</li>
+          <li data-info="Corregimos errores en partidas (nombres, fechas, datos) mediante el trámite de rectificación ante el Registro Civil." data-titulo="Rectificación de partidas"><b>Rectificación de partidas</b></li>
+          <li data-info="Obtenemos el comprobante de empadronamiento que acredita a qué obra social estás afiliado, requerido en muchos trámites." data-titulo="CODEM"><b>CODEM:</b> comprobante de empadronamiento de obra social</li>
+          <li data-info="Gestionamos la certificación de datos personales ante el RENAPER, útil para validar identidad en distintos trámites." data-titulo="Certificación de datos RENAPER"><b>Certificación de datos RENAPER</b></li>
+          <li data-info="Tramitamos certificaciones de ingresos y egresos del país y acompañamos el proceso de obtención de la ciudadanía argentina." data-titulo="Certificación migratoria y ciudadanía"><b>Certificación migratoria</b> y ciudadanía argentina</li>
+          <li data-info="Gestionamos la apostilla de La Haya para que tus documentos tengan validez legal en el exterior." data-titulo="Apostillado">Apostillado de documentación</li>
         </ul>
       </div>
       <div class="card c-bordo reveal">
         <div class="chip">⚖️</div>
-        <h3>Área Legal</h3>
+                <h3>Área Legal</h3>
         <ul>
-          <li>Sucesiones y declaratorias de herederos</li>
-          <li>Contratos y acuerdos privados</li>
-          <li>Cartas documento y telegramas laborales</li>
-          <li><b>Informe de dominio</b></li>
-          <li>Reclamos y mediaciones</li>
-          <li>Asesoramiento laboral y previsional</li>
-          <li>Poderes y documentación notarial</li>
+          <li data-info="Iniciamos y acompañamos el juicio sucesorio para transmitir los bienes de una persona fallecida a sus herederos legales." data-titulo="Sucesiones">Sucesiones y declaratorias de herederos</li>
+          <li data-info="Redactamos y revisamos contratos y acuerdos privados (locación, compraventa, servicios, etc.) para proteger tus intereses." data-titulo="Contratos y acuerdos">Contratos y acuerdos privados</li>
+          <li data-info="Confeccionamos y enviamos cartas documento y telegramas laborales para reclamos, intimaciones o renuncias con validez legal." data-titulo="Cartas documento y telegramas">Cartas documento y telegramas laborales</li>
+          <li data-info="Solicitamos el informe de dominio de un inmueble o vehículo para conocer su titularidad y si tiene gravámenes o embargos." data-titulo="Informe de dominio"><b>Informe de dominio</b></li>
+          <li data-info="Te representamos en reclamos y mediaciones para resolver conflictos de forma ágil antes de llegar a un juicio." data-titulo="Reclamos y mediaciones">Reclamos y mediaciones</li>
+          <li data-info="Asesoramiento legal sobre tus derechos laborales y previsionales, despidos, indemnizaciones y beneficios." data-titulo="Asesoramiento laboral y previsional">Asesoramiento laboral y previsional</li>
+          <li data-info="Gestionamos poderes y documentación notarial para que alguien te represente o para formalizar actos legales." data-titulo="Poderes y documentación notarial">Poderes y documentación notarial</li>
         </ul>
       </div>
     </div>
@@ -588,7 +614,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
         <span class="pill reveal">Opiniones de nuestros clientes</span>
         <h2 class="h2 reveal" style="margin-bottom:0">Lo que dicen quienes ya resolvieron sus trámites</h2>
       </div>
-      <div class="score reveal"><span class="n">5.0</span><div><div class="stars">★★★★★</div><small>41 reseñas en Google Maps</small></div></div>
+      <div class="score reveal"><span class="n">5.0</span><div><div class="stars">★★★★★</div><small>31 reseñas en Google Maps</small></div></div>
     </div>
     <div class="res-grid">
       <div class="res reveal"><span class="stars">★★★★★</span><p>«Excelente profesional, cálido y eficiente. Mi esposa y yo estamos muy agradecidos. Muy recomendable.»</p><span class="src">Reseña de Google</span></div>
@@ -698,6 +724,46 @@ function enviarMail(){
   const tema=document.getElementById('tema').value;
   window.location.href='mailto:gintegralcg@gmail.com?subject='+encodeURIComponent('Consulta web — '+tema)+'&body='+encodeURIComponent(armar());
 }
+
+// ===== Modal de trámites =====
+(function(){
+  const ov=document.createElement('div');
+  ov.className='modal-ov';
+  ov.innerHTML=`
+    <div class="modal" role="dialog" aria-modal="true">
+      <button class="mclose" aria-label="Cerrar">&times;</button>
+      <div class="mchip" id="mChip">📄</div>
+      <h3 id="mTitulo"></h3>
+      <p id="mTexto"></p>
+      <a class="mwa" id="mWa" target="_blank" rel="noopener">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="#04180d"><path d="M12.04 2c-5.46 0-9.9 4.43-9.9 9.88 0 1.74.46 3.44 1.32 4.94L2 22l5.32-1.39c1.45.79 3.08 1.21 4.72 1.21 5.46 0 9.9-4.43 9.9-9.88C21.94 6.43 17.5 2 12.04 2zm0 18.02c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.26 8.26 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23 4.54 0 8.24 3.69 8.24 8.23 0 4.54-3.7 8.24-8.24 8.24zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.78.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28z"/></svg>
+        Consultar por WhatsApp
+      </a>
+    </div>`;
+  document.body.appendChild(ov);
+  const mTitulo=ov.querySelector('#mTitulo'), mTexto=ov.querySelector('#mTexto'),
+        mWa=ov.querySelector('#mWa'), mChip=ov.querySelector('#mChip');
+
+  function abrir(li){
+    const titulo=li.getAttribute('data-titulo')||'';
+    const texto=li.getAttribute('data-info')||'';
+    const chip=li.closest('.card')?.querySelector('.chip')?.textContent||'📄';
+    mTitulo.textContent=titulo;
+    mTexto.textContent=texto;
+    mChip.textContent=chip;
+    mWa.href='https://wa.me/5491125114119?text='+encodeURIComponent('Hola, quiero consultar sobre: '+titulo);
+    ov.classList.add('open');
+    document.body.style.overflow='hidden';
+  }
+  function cerrar(){ov.classList.remove('open');document.body.style.overflow='';}
+
+  document.querySelectorAll('.card li[data-info]').forEach(li=>{
+    li.addEventListener('click',()=>abrir(li));
+  });
+  ov.querySelector('.mclose').addEventListener('click',cerrar);
+  ov.addEventListener('click',e=>{if(e.target===ov)cerrar();});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')cerrar();});
+})();
 </script>
   <script src="cg-chat-widget.js" defer></script>
 </body>
