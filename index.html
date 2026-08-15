@@ -451,20 +451,21 @@ body.ver-tec .vista-tec{display:block}
 
 <header>
   <div class="wrap nav">
-    <a class="brand" href="#inicio">
+    <a class="brand" href="#" onclick="irA('inicio');return false;">
       <div class="logo">CG</div>
       <div class="brand-t"><strong>Estudio CG</strong><span>Gestoría & Consultoría</span></div>
     </a>
     <button class="hamb" aria-label="Abrir menú" onclick="document.getElementById('menu').classList.toggle('open')">☰</button>
     <nav class="menu" id="menu">
-      <a href="#servicios">Servicios</a>
+      <a href="#" onclick="irA('inicio');return false;">Inicio</a>
+      <a href="#" onclick="irA('servicios');return false;">Servicios</a>
       <a href="#" onclick="verTecnologia();return false;">Otros Servicios</a>
-      <a href="#proceso">Cómo trabajamos</a>
-      <a href="#nosotros">Nosotros</a>
-      <a href="#resenas">Opiniones</a>
-      <a href="#faq">Preguntas</a>
-      <a href="#contacto">Contacto</a>
-      <a class="btn btn-gold" href="#contacto">Consulta sin cargo</a>
+      <a href="#" onclick="irA('proceso');return false;">Cómo trabajamos</a>
+      <a href="#" onclick="irA('nosotros');return false;">Nosotros</a>
+      <a href="#" onclick="irA('resenas');return false;">Opiniones</a>
+      <a href="#" onclick="irA('faq');return false;">Preguntas</a>
+      <a href="#" onclick="irA('contacto');return false;">Contacto</a>
+      <a class="btn btn-gold" href="#" onclick="irA('contacto');return false;">Consulta sin cargo</a>
     </nav>
   </div>
 </header>
@@ -479,7 +480,7 @@ body.ver-tec .vista-tec{display:block}
       <p>Asesoramiento integral y soluciones personalizadas para personas y empresas, con más de 20 años de experiencia en gestiones ante organismos públicos.</p>
       <div class="hero-cta">
         <a class="btn btn-wa" href="https://wa.me/5491125114119?text=Hola%2C%20quiero%20hacer%20una%20consulta" target="_blank" rel="noopener">Consultá por WhatsApp</a>
-        <a class="btn btn-glass" href="#servicios">Ver servicios</a>
+        <a class="btn btn-glass" href="#" onclick="irA('servicios');return false;">Ver servicios</a>
       </div>
       <div class="hero-mini">
         <div class="mini"><b>+20</b><small>años de experiencia</small></div>
@@ -746,14 +747,20 @@ function enviarMail(){
 // ===== Vistas: principal / tecnológica =====
 function verTecnologia(){
   document.body.classList.add('ver-tec');
+  document.getElementById('menu').classList.remove('open');
   window.scrollTo({top:0,behavior:'instant'});
 }
 function verPrincipal(){
   document.body.classList.remove('ver-tec');
   window.scrollTo({top:0,behavior:'instant'});
-  // volver a la sección de servicios
-  const s=document.getElementById('servicios');
-  if(s) s.scrollIntoView({behavior:'instant'});
+}
+// Ir a una sección: primero vuelve a la vista principal, luego navega
+function irA(id){
+  document.body.classList.remove('ver-tec');
+  document.getElementById('menu').classList.remove('open');
+  if(id==='inicio'){ window.scrollTo({top:0,behavior:'smooth'}); return; }
+  const el=document.getElementById(id);
+  if(el){ setTimeout(function(){ el.scrollIntoView({behavior:'smooth'}); }, 30); }
 }
 
 // ===== Modal de área (lista de trámites) =====
