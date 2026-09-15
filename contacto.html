@@ -1,0 +1,23 @@
+<section class="contacto"><div class="wrap">
+    <div class="cont-grid">
+      <div>
+        <span class="eyebrow">Contacto</span>
+        <h2 class="h2">Hablemos de tu trámite</h2>
+        <div class="cont-info" style="margin-top:20px">
+          <a class="ci" href="https://wa.me/5491125114119" target="_blank" rel="noopener"><span class="k">Teléfono / WhatsApp</span><span class="v">11 2511-4119</span></a>
+          <a class="ci" href="mailto:gintegralcg@gmail.com"><span class="k">Correo</span><span class="v">gintegralcg@gmail.com</span></a>
+          <a class="ci" href="https://maps.app.goo.gl/qpvtmTRtjDiKDS7K6" target="_blank" rel="noopener"><span class="k">Dirección</span><span class="v">José Ignacio Rucci 3351, CABA</span></a>
+          <span class="ci"><span class="k">Horario</span><span class="v">Lunes a viernes · 10 a 17 hs</span></span>
+        </div>
+      </div>
+      <div class="form">
+        <div class="field"><label for="nombre">Nombre <span aria-hidden="true" style="color:var(--gold)">*</span></label><input id="nombre" type="text" placeholder="Tu nombre y apellido" required aria-required="true"><span class="err-msg" id="err-nombre">Necesitamos tu nombre para responderte.</span></div>
+        <div class="field"><label for="tel">Teléfono</label><input id="tel" type="tel" placeholder="11 ..."></div>
+        <div class="field"><label for="tema">Tipo de trámite</label><select id="tema"><option>Consulta general</option><option>Jubilación / Pensión (ANSES)</option><option>Jubilación IPS Provincia Bs. As.</option><option>Monotributo / Fiscal</option><option>Liquidación de sueldos</option><option>Ciudadanía / Migratorio</option><option>Partidas / RENAPER / CODEM</option><option>Infracciones de tránsito</option><option>Área legal</option><option>Otro</option></select></div>
+        <div class="field"><label for="msg">Mensaje <span aria-hidden="true" style="color:var(--gold)">*</span></label><textarea id="msg" placeholder="Contanos brevemente qué necesitás" required aria-required="true"></textarea><span class="err-msg" id="err-msg">Contanos qué necesitás para poder ayudarte.</span></div>
+        <button type="button" class="btn btn-primary" style="width:100%" onclick="enviarMail()">Enviar consulta por correo</button>
+        <button type="button" class="btn btn-ghost" style="width:100%;margin-top:10px" onclick="enviarWA()">O enviar por WhatsApp</button>
+        <p class="note">Tus datos se usan solo para responder tu consulta.</p>
+      </div>
+    </div>
+  </div></section>
